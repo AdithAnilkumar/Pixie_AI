@@ -8,6 +8,12 @@
       rel="stylesheet"
     />
     <style>
+      @font-face {
+        font-family: "PixieDotMatrix";
+        src: url("../Frontend/Graphics/font.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
       * {
         margin: 0;
         padding: 0;
@@ -46,22 +52,20 @@
         -webkit-app-region: drag;
       }
       .pixie-title {
-        font-family: "Courier New", monospace;
+        font-family: "PixieDotMatrix", "Courier New", monospace;
         font-size: 84px;
-        font-weight: 900;
+        font-weight: normal;
         color: white;
         text-align: center;
         letter-spacing: 18px;
         text-shadow:
-          0 0 2px rgba(0, 0, 0, 0.8),
-          0 0 5px rgba(255, 255, 255, 0.6),
-          0 0 10px rgba(255, 107, 53, 0.5);
+          0 0 5px rgba(255, 255, 255, 0.8),
+          0 0 10px rgba(255, 107, 53, 0.6),
+          0 0 15px rgba(255, 107, 53, 0.4);
         margin-bottom: 20px;
         -webkit-app-region: drag;
         user-select: none;
         text-transform: uppercase;
-        -webkit-text-stroke: 2px rgba(0, 0, 0, 0.3);
-        paint-order: stroke fill;
       }
       .fox-container {
         flex: 1;

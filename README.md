@@ -69,28 +69,21 @@ An intelligent AI assistant with voice interaction, real-time search, image gene
 
 ```
 Pixie_AI/
-├── Backend/                    # Core AI services
-│   ├── Model.py                   # Decision-making model (Cohere)
-│   ├── Chatbot.py                 # Conversational AI (Groq Llama)
-│   ├── SpeechToText.py            # Voice input (Groq Whisper)
-│   ├── TextToSpeech.py            # Voice output (Edge TTS)
-│   ├── ImageGeneration.py         # AI image creation (Hugging Face)
-│   ├── RealtimeSearchEngine.py    # Web search integration
-│   ├── Automation.py              # Task automation engine
-│   ├── GestureControl.py          # Hand gesture recognition
-│   ├── ResearchTool.py            # Research report generator
-│   ├── TelegramBridge.py          # Telegram bot integration
-│   └── FolderContext.py           # Folder context manager
-├── Frontend/                   # User interface
-│   ├── GUI.py                     # Main PyQt5 GUI
-│   ├── Graphics/                  # 3D models and assets
-│   └── Files/                     # UI state management
-├── Data/                       # Application data
-│   ├── ChatLog.json               # Conversation history
-│   └── FolderContext.json         # Active folder state
-├── pixieuiii/                  # 3D chat interface
-│   └── chat_3d.html               # WebGL 3D fox model
-└── Main.py                     # Application entry point
+├── Backend/           # Core AI services
+│   ├── Model.py              # AI model integration
+│   ├── Chatbot.py            # Conversational AI logic
+│   ├── SpeechToText.py       # Voice input processing
+│   ├── TextToSpeech.py       # Voice output generation
+│   ├── ImageGeneration.py    # AI image creation
+│   ├── RealtimeSearchEngine.py # Web search integration
+│   └── Automation.py         # Task automation
+├── Frontend/          # User interface
+│   ├── GUI.py                # Main GUI application
+│   ├── Graphics/             # 3D models and assets
+│   └── Files/                # UI state management
+├── Data/              # Application data
+│   └── ChatLog.json          # Conversation history
+└── Main.py            # Application entry point
 ```
 
 ## 🚀 Getting Started
@@ -98,9 +91,7 @@ Pixie_AI/
 ### Prerequisites
 
 - Python 3.8+
-- Webcam (for gesture control)
-- Microphone (for voice input)
-- Speaker (for voice output)
+- pip package manager
 
 ### Installation
 
@@ -128,27 +119,10 @@ pip install -r Requirements.txt
 ```
 
 4. Configure environment variables:
-   Create a `.env` file in the root directory:
+   Create a `.env` file in the root directory with your API keys:
 
-```env
-# Required API Keys
-GroqAPIKey=your_groq_api_key
-CohereAPIKey=your_cohere_api_key
-HuggingFaceAPIKey=your_huggingface_api_key
-
-# Optional: Telegram Integration
-TelegramBotToken=your_telegram_bot_token
-TelegramChatID=your_chat_id
-TelegramAllowedChatID=your_allowed_chat_id
-
-# User Configuration
-Username=YourName
-Assistantname=Pixie
-
-# Optional: Model Configuration
-GroqModel=llama-3.3-70b-versatile
-HuggingFaceModel=black-forest-labs/FLUX.1-schnell
-AssistantVoice=en-US-AriaNeural
+```
+# Add your API keys here
 ```
 
 ### Running the Application
@@ -157,135 +131,38 @@ AssistantVoice=en-US-AriaNeural
 python Main.py
 ```
 
-## 🎮 Usage Guide
+## 🎮 Usage
 
-### Voice Commands
-
-**General Conversation:**
-
-- "Hello Pixie, how are you?"
-- "Tell me about quantum computing"
-- "What's the weather like today?"
-
-**Automation:**
-
-- "Open Chrome and Facebook"
-- "Close Notepad"
-- "Play Afsanay by YS"
-- "Volume up / Volume down / Mute"
-
-**Search:**
-
-- "Google search Python tutorials"
-- "YouTube search machine learning"
-- "Who is Elon Musk?" (realtime search)
-
-**Image Generation:**
-
-- "Generate image of a sunset over mountains"
-- "Create a flowchart for user authentication"
-- "Make an infographic about AI"
-
-**Research:**
-
-- "Research artificial intelligence in healthcare in 10 pages"
-- "Deep research on quantum computing in 500 lines"
-- "Make research report on blockchain technology"
-
-**Folder Context:**
-
-- "Use folder C:\Projects\MyApp"
-- "Work with folder Desktop"
-- "Clear folder context"
-
-### Telegram Commands
-
-Send these commands to your Telegram bot:
-
-**Basic:**
-
-- `/start` - Link your chat with Pixie
-- `telegram help` - Show all commands
-- `telegram send Hello!` - Send text message
-
-**File Operations:**
-
-- `telegram file C:\path\to\file.pdf` - Send file
-- `telegram folder C:\Projects` - Zip and send folder
-- `telegram screenshot` - Send current screen
-
-**Advanced:**
-
-- `telegram voice Hello from Pixie!` - Send voice message
-- `telegram location 40.7128,-74.0060` - Send location
-- `telegram contact +1234567890|John|Doe` - Send contact
-- `telegram poll What's your favorite?|Option A|Option B` - Create poll
-- `telegram album C:\pic1.jpg|C:\pic2.jpg` - Send photo album
-
-### Gesture Control
-
-**Available Gestures:**
-
-- **Pinch (thumb + index)**: Zoom in/out (Ctrl+Scroll)
-- **Open Palm Swipe Left/Right**: Switch windows (Alt+Tab)
-- **Two Fingers Swipe Left/Right**: Switch browser tabs (Ctrl+Tab)
-- **Open Palm Up/Down**: Scroll page
-- **Closed Fist (hold 0.8s)**: Minimize all windows (Win+M)
-
-**Tips:**
-
-- Keep hand clearly visible to camera
-- Use deliberate, smooth movements
-- Press 'q' in camera window to exit gesture mode
+1. Launch the application using `python Main.py`
+2. Interact with Pixie through the GUI interface
+3. Use voice commands or text input
+4. Ask questions, generate images, or automate tasks
 
 ## 🛠️ Technologies
 
-- **Python 3.8+**: Core programming language
-- **Groq API**: LLM (Llama 3.3 70B) and Speech-to-Text (Whisper)
-- **Cohere API**: Decision-making and intent classification
-- **Hugging Face**: Image generation (FLUX, Stable Diffusion)
-- **Edge TTS**: Text-to-speech synthesis
-- **MediaPipe**: Hand gesture recognition
-- **PyQt5**: GUI framework
-- **OpenCV**: Computer vision for gesture control
-- **BeautifulSoup**: Web scraping
-- **Google Search API**: Real-time information retrieval
-- **Telegram Bot API**: Remote control and notifications
-- **python-docx**: Research report generation
+- **Python**: Core programming language
+- **AI/ML Models**: Language and image generation
+- **3D Graphics**: Interactive UI with GLB models
+- **Speech Processing**: Voice recognition and synthesis
+- **Web Search**: Real-time information retrieval
 
-## 📝 Module Details
+## 📝 Features in Detail
 
 ### Voice Interaction
 
-Real-time speech recognition and natural voice responses create seamless human-like conversations.
-
-### Gesture Control
-
-Control your computer hands-free using intuitive hand gestures detected by your webcam.
-
-### Research Tool
-
-Generate comprehensive, citation-backed research reports by aggregating information from academic papers, web sources, and tutorial videos.
-
-### Telegram Integration
-
-Access Pixie remotely from your phone, send files, browse your computer's file system, and receive voice replies.
-
-### Folder Context
-
-Load entire project folders into Pixie's context for intelligent code assistance and project-aware responses.
-
-### Image Generation
-
-Create images, diagrams, flowcharts, and infographics using state-of-the-art AI models.
+Pixie can listen to your voice commands and respond with natural speech, making interactions feel more human-like.
 
 ### Real-time Search
 
-Get up-to-date information from the web, including live stock prices, news, and current events.
+Get current information from the web without leaving the conversation.
+
+### Image Generation
+
+Create custom images by describing what you want to see.
 
 ### Automation
 
-Automate repetitive tasks like opening applications, controlling system volume, and generating content.
+Automate repetitive tasks and workflows with simple commands.
 
 ## 🤝 Contributing
 
