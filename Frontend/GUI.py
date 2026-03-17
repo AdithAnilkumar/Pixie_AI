@@ -250,6 +250,17 @@ class PixieWebChatWindow:
         with open(html_path, "r", encoding="utf-8") as html_file:
             html_content = html_file.read()
 
+        # Embed font file as base64
+        font_path = GraphicsDirectoryPath("font.ttf")
+        if os.path.exists(font_path):
+            with open(font_path, "rb") as font_file:
+                font_data = base64.b64encode(font_file.read()).decode("utf-8")
+                font_data_url = f"data:font/truetype;base64,{font_data}"
+            html_content = html_content.replace(
+                'src: url("../Frontend/Graphics/font.ttf")',
+                f'src: url("{font_data_url}")',
+            )
+
         glb_path = GraphicsDirectoryPath("Fox_draco.glb")
         if os.path.exists(glb_path):
             with open(glb_path, "rb") as glb_file:
