@@ -46,21 +46,22 @@
         -webkit-app-region: drag;
       }
       .pixie-title {
-        font-family: "Share Tech Mono", "Courier New", monospace;
-        font-size: 72px;
-        font-weight: 700;
+        font-family: "Courier New", monospace;
+        font-size: 84px;
+        font-weight: 900;
         color: white;
         text-align: center;
-        letter-spacing: 12px;
+        letter-spacing: 18px;
         text-shadow:
-          0 0 10px rgba(255, 255, 255, 0.8),
-          0 0 20px rgba(255, 107, 53, 0.6),
-          0 0 30px rgba(255, 107, 53, 0.4),
-          2px 2px 4px rgba(0, 0, 0, 0.3);
+          0 0 2px rgba(0, 0, 0, 0.8),
+          0 0 5px rgba(255, 255, 255, 0.6),
+          0 0 10px rgba(255, 107, 53, 0.5);
         margin-bottom: 20px;
         -webkit-app-region: drag;
         user-select: none;
         text-transform: uppercase;
+        -webkit-text-stroke: 2px rgba(0, 0, 0, 0.3);
+        paint-order: stroke fill;
       }
       .fox-container {
         flex: 1;
@@ -382,7 +383,7 @@
       <div class="chat-side">
         <div class="chat-container">
           <div class="chat-header">
-            <span class="chat-title">Pixie</span>
+            <span class="chat-title"></span>
             <button class="mode-toggle" id="modeToggle">
               <span id="modeText">Operator</span>
             </button>
