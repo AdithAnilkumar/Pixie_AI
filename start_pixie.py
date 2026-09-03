@@ -126,6 +126,10 @@ def main():
     # Import and run Main
     try:
         import Main
+        import threading
+        thread1 = threading.Thread(target=Main.FirstThread, daemon=True)
+        thread1.start()
+        Main.SecondThread()
     except KeyboardInterrupt:
         print("\n\nPixie AI stopped by user")
     except Exception as e:
