@@ -10,7 +10,7 @@ from Backend.Chatbot import chatBot, AnswerModifier
 from Backend.SpeechToText import SpeechRecognition, QueryModifier
 from Backend.Model import FirstLayerDMM
 from Backend.RealtimeSearchEngine import RealtimeSearchEngine
-from Backend.Automation import TranslateAndExecute
+from Backend.Automation import TranslateAndExecute, LiveSearch
 from Backend.TextToSpeech import TextToSpeech
 from Backend.FolderContext import handle_folder_command
 from Backend.TelegramBridge import handle_local_telegram_command, start_telegram_service
@@ -28,7 +28,7 @@ Assistantname = env_vars.get("Assistantname")
 DefaultMessage = f'''{Username} : Hello {Assistantname}, How are you?
 {Assistantname} : Welcome {Username}. I am doing well. How may i help you?'''
 subprocesses = []
-Functions = ["open", "close", "play", "system", "content", "google search", "youtube search", "research"]
+Functions = ["open", "close", "play", "system", "content", "google search", "youtube search", "live search", "research"]
 
 def ShowDefaultChatIfNoChats():
     File = open(r'Data\ChatLog.json',"r", encoding='utf-8')
@@ -168,6 +168,15 @@ def MainExecution():
                 SetAssistantStatus("Thinking...")
                 QueryFinal = Queries.replace("general ","")
                 Answer = chatBot(QueryModifier(QueryFinal))
+                ShowTextToScreen(f"{Assistantname} : {Answer}")
+                SetAssistantStatus("Answering...")
+                TextToSpeech(Answer)
+                return True
+
+            elif "live search" in Queries:
+                SetAssistantStatus("Searching...")
+                QueryFinal = Queries.replace("live search ","")
+                Answer = LiveSearch(QueryModifier(QueryFinal))
                 ShowTextToScreen(f"{Assistantname} : {Answer}")
                 SetAssistantStatus("Answering...")
                 TextToSpeech(Answer)

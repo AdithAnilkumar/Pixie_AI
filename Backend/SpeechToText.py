@@ -93,8 +93,12 @@ chrome_options = Options()
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.142.86 Safari/537.36"
 chrome_options.add_argument(f'user-agent={user_agent}')
 chrome_options.add_argument("--use-fake-ui-for-media-stream")
-chrome_options.add_argument("--use-fake-device-for-media-stream")
-chrome_options.add_argument("--headless=new")
+# Removed fake device argument so Chrome records real microphone audio
+# chrome_options.add_argument("--use-fake-device-for-media-stream")
+# Removed headless mode - voice input needs visible browser
+# chrome_options.add_argument("--headless=new")
+chrome_options.add_argument("--window-size=1,1")
+chrome_options.add_argument("--window-position=-2000,-2000")
 
 # Lazy-initialized browser instance.
 driver = None
