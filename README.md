@@ -6,25 +6,25 @@ An intelligent AI assistant with voice interaction, real-time search, image gene
 
 ### 🎤 Voice & Speech
 
-- **Speech-to-Text**: Real-time voice recognition using Groq Whisper
+- **Speech-to-Text**: Real-time voice recognition with Web Speech API & Groq Whisper transcription
 - **Text-to-Speech**: Natural voice responses with Edge TTS
 - **Voice Commands**: Hands-free control of all features
 - **Multi-language Support**: Automatic translation capabilities
 
 ### 🤖 AI Intelligence
 
-- **Conversational AI**: Context-aware chatbot powered by Llama 3.3 70B
-- **Decision Engine**: Smart intent classification (general/realtime/automation)
-- **Real-time Search**: Live web search with Google integration
+- **Conversational AI**: Context-aware chatbot powered by Llama 3.3 70B (Groq)
+- **Decision Engine**: Smart intent classification (general/realtime/automation) powered by Cohere Command-R
+- **Real-time Search**: Live web search with Google integration and financial market snapshots
 - **Context Awareness**: Folder context and conversation history tracking
 - **Chat History**: Persistent conversation logging with JSON storage
 
 ### 🖼️ Image Generation
 
-- **AI Image Creation**: Generate images using Hugging Face models (FLUX, Stable Diffusion)
+- **AI Image Creation**: Generate images using Hugging Face models (FLUX.1 Schnell, Stable Diffusion 3.5 Large, SDXL)
 - **Diagram Support**: Create flowcharts, charts, infographics, and technical diagrams
 - **Batch Generation**: Create multiple variations simultaneously
-- **Auto-optimization**: Enhanced prompts for better quality
+- **Auto-optimization**: Enhanced prompts for presentation-ready quality
 
 ### 🖐️ Gesture Control
 
@@ -48,8 +48,8 @@ An intelligent AI assistant with voice interaction, real-time search, image gene
 
 - **Remote Control**: Control Pixie from anywhere via Telegram bot
 - **File Sharing**: Send/receive files, folders, screenshots
-- **Voice Messages**: Send voice replies to Telegram
-- **File Browser**: Interactive file system browser with filters
+- **Voice Messages**: Send voice replies to Telegram with Groq Whisper transcription
+- **File Browser**: Interactive file system browser with filters and pagination
 - **Folder Zipping**: Automatic compression and sending of folders
 - **Location Sharing**: Send GPS coordinates
 - **Contact Sharing**: Share contact information
@@ -58,7 +58,7 @@ An intelligent AI assistant with voice interaction, real-time search, image gene
 
 ### ⚙️ Automation & System Control
 
-- **App Control**: Open/close applications by voice
+- **App Control**: Open/close applications by voice (multi-path execution for Spotify, WhatsApp, Chrome, Edge, Firefox)
 - **Web Navigation**: Open websites and search Google/YouTube
 - **Content Generation**: AI-powered writing (emails, code, documents)
 - **System Commands**: Volume control, mute/unmute
@@ -70,16 +70,20 @@ An intelligent AI assistant with voice interaction, real-time search, image gene
 ```
 Pixie_AI/
 ├── Backend/           # Core AI services
-│   ├── Model.py              # AI model integration
-│   ├── Chatbot.py            # Conversational AI logic
+│   ├── Model.py              # Cohere decision engine
+│   ├── Chatbot.py            # Conversational AI (Llama 3.3 70B)
 │   ├── SpeechToText.py       # Voice input processing
-│   ├── TextToSpeech.py       # Voice output generation
-│   ├── ImageGeneration.py    # AI image creation
-│   ├── RealtimeSearchEngine.py # Web search integration
-│   └── Automation.py         # Task automation
+│   ├── TextToSpeech.py       # Voice output generation (Edge TTS)
+│   ├── ImageGeneration.py    # AI image & diagram creation (FLUX)
+│   ├── RealtimeSearchEngine.py # Live web search engine
+│   ├── ResearchTool.py       # Deep research report generator (.docx)
+│   ├── GestureControl.py     # MediaPipe hand tracking & gestures
+│   ├── TelegramBridge.py     # Remote control Telegram service
+│   ├── FolderContext.py      # Workspace folder context loader
+│   └── Automation.py         # Task & app automation
 ├── Frontend/          # User interface
-│   ├── GUI.py                # Main GUI application
-│   ├── Graphics/             # 3D models and assets
+│   ├── GUI.py                # PyWebview application & system tray
+│   ├── Graphics/             # 3D models and assets (Fox_draco.glb)
 │   └── Files/                # UI state management
 ├── Data/              # Application data
 │   └── ChatLog.json          # Conversation history
@@ -98,7 +102,7 @@ Pixie_AI/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/mizin050/Pixie_AI.git
+git clone https://github.com/AdithAnilkumar/Pixie_AI.git
 cd Pixie_AI
 ```
 
@@ -121,8 +125,12 @@ pip install -r Requirements.txt
 4. Configure environment variables:
    Create a `.env` file in the root directory with your API keys:
 
-```
-# Add your API keys here
+```ini
+Username=Adith
+Assistantname=Pixie
+GroqAPIKey=your_groq_api_key
+CohereAPIKey=your_cohere_api_key
+HuggingFaceAPIKey=your_huggingface_api_key
 ```
 
 ### Running the Application
@@ -134,54 +142,28 @@ python Main.py
 ## 🎮 Usage
 
 1. Launch the application using `python Main.py`
-2. Interact with Pixie through the GUI interface
+2. Interact with Pixie through the 3D GUI interface or System Tray
 3. Use voice commands or text input
-4. Ask questions, generate images, or automate tasks
+4. Ask questions, generate images/diagrams, perform deep research, or automate tasks
 
 ## 🛠️ Technologies
 
 - **Python**: Core programming language
-- **AI/ML Models**: Language and image generation
-- **3D Graphics**: Interactive UI with GLB models
-- **Speech Processing**: Voice recognition and synthesis
-- **Web Search**: Real-time information retrieval
-
-## 📝 Features in Detail
-
-### Voice Interaction
-
-Pixie can listen to your voice commands and respond with natural speech, making interactions feel more human-like.
-
-### Real-time Search
-
-Get current information from the web without leaving the conversation.
-
-### Image Generation
-
-Create custom images by describing what you want to see.
-
-### Automation
-
-Automate repetitive tasks and workflows with simple commands.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+- **AI/ML Models**: Llama 3.3 70B (Groq), Cohere Command-R, FLUX.1 Schnell (Hugging Face)
+- **Gesture Recognition**: MediaPipe HandLandmarker & PyAutoGUI
+- **3D Graphics**: Three.js & PyWebview with GLB models
+- **Speech Processing**: Web Speech API & Edge TTS (Neural Voices)
+- **Document Generation**: python-docx report exporter with academic citations
 
 ## 👤 Author
 
-**mizin050**
+**AdithAnilkumar**
 
-- GitHub: [@mizin050](https://github.com/mizin050)
+- GitHub: [@AdithAnilkumar](https://github.com/AdithAnilkumar)
 
 ## 🙏 Acknowledgments
 
-- Thanks to all contributors and users of Pixie_AI
-- Built with modern AI technologies and frameworks
+- Built with modern AI models and computer vision frameworks.
 
 ---
 
