@@ -71,7 +71,7 @@ def ShowChatsOnGUI():
 
 def InitialExecution():
     start_telegram_service()
-    SetMicrophoneStatus("False")
+    SetMicrophoneStatus("True")
     ShowTextToScreen("")
     ShowDefaultChatIfNoChats()
     ChatLogIntegration()

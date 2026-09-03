@@ -1,4 +1,4 @@
-﻿import base64
+import base64
 import os
 import tempfile
 import threading
@@ -661,10 +661,12 @@ def _file_sync_loop():
 # ---------------- ENTRYPOINT ----------------
 
 def GraphicalUserInterface():
-    MicButtonInitialized()
-    global chat_window, is_ui_running, start_ui_requested
+    SetMicrophoneStatus("True")
+    global chat_window, is_ui_running, start_ui_requested, desired_ui_visible
 
-    is_ui_running = False
+    desired_ui_visible = True
+    start_ui_requested = True
+    is_ui_running = True
     setup_tray()
 
     sync_thread = threading.Thread(target=_file_sync_loop, daemon=True)
