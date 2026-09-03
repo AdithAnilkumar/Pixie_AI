@@ -157,8 +157,8 @@ def SpeechRecognition():
     last_text = ""
     last_change_time = time.time()
     start_time = time.time()
-    max_wait_seconds = 20
-    stable_for_seconds = 1.0
+    max_wait_seconds = 15
+    stable_for_seconds = 0.4
 
     while True:
         try:
@@ -190,7 +190,7 @@ def SpeechRecognition():
                 pass
             return ""
 
-        time.sleep(0.15)
+        time.sleep(0.04)
 
 # Main execution block.
 if __name__ == "__main__":

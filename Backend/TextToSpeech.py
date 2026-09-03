@@ -44,7 +44,7 @@ async def TextToAudioFile(text) -> None:
         cleaned_speech_text = "Done."
 
     # Create the communicate object to generate speech
-    communicate = edge_tts.Communicate(cleaned_speech_text, AssistantVoice, pitch='+5Hz', rate='+13%')
+    communicate = edge_tts.Communicate(cleaned_speech_text, AssistantVoice, pitch='+3Hz', rate='+25%')
     await communicate.save(str(file_path)) # Save the generated speech as an MP3 file
 
 # Function to manage Text-to-Speech (TTS) functionality

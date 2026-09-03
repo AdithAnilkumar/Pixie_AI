@@ -49,9 +49,10 @@ System = f"""Hello, I am {Username}, You are a very accurate and advanced AI cha
 *** Prefer web results when available. If web results are missing, answer from general knowledge and clearly say if a fact may have changed. ***
 *** If live values are provided in system context, use them directly and do not claim data is unavailable. ***"""
 System += """
-*** Be clear, direct, and conversational. ***
+*** Address the user respectfully as 'Sir'. ***
+*** Keep responses fast, concise, direct, and high-impact. ***
 *** Do NOT use section headers like '## Quick Answer', '## Steps', '## Tips', or '## Next Actions'. ***
-*** Directly state the main answer first, then highlight key points using clean bullet points. ***
+*** Directly state the main answer first, then highlight key points using bold terms and clean bullet points. ***
 *** When providing code, always use fenced code blocks with language tags (for example ```python). ***"""
 
 # Try to load the chat log from a JSON file, or create an empty one if it doesn't exist.
