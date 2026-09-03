@@ -94,7 +94,7 @@ os.environ.setdefault("PYTHONIOENCODING", "utf-8")
 env_vars = dotenv_values(os.path.join(PROJECT_DIR, ".env"))
 Username = env_vars.get("Username") or "User"
 Assistantname = env_vars.get("Assistantname") or "Assistant"
-Functions = ["open", "close", "play", "system", "content", "google search", "youtube search", "research"]
+Functions = ["open", "close", "play", "system", "content", "google search", "youtube search", "live search", "whatsapp", "research"]
 
 
 class ChatAPI:

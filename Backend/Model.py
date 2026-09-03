@@ -11,7 +11,7 @@ co = cohere.Client(api_key=cohereAPIKey)
 funcs = [
     "call", "general", "realtime", "open", "close", "play",
     "generate image", "system", "content", "google search",
-    "youtube search", "live search", "reminders", "research", "exit"
+    "youtube search", "live search", "whatsapp", "reminders", "research", "exit"
 ]
 
 messages = []
@@ -33,6 +33,7 @@ You will decide whether a query is a 'general' query, a 'realtime' query, or is 
 -> Respond with 'google search (topic)' if a query is asking to search a specific topic on google but if the query is asking to search multiple topics on google, respond with 'google search 1st topic, google search 2nd topic' and so on.
 -> Respond with 'youtube search (topic)' if a query is asking to search a specific topic on youtube but if the query is asking to search multiple topics on youtube, respond with 'youtube search 1st topic, youtube search 2nd topic' and so on.
 -> Respond with 'live search (topic)' if a query is asking for a quick answer, instant result, or live information like 'live search weather today', 'quick search bitcoin price', 'what is the capital of france' (instant factual queries). This provides immediate answers without opening browser.
+-> Respond with 'whatsapp (message details)' if a query is asking to send a message on whatsapp or send whatsapp message like 'send whatsapp message to +1234567890 saying hello', 'whatsapp message hello', etc.
 -> Respond with 'research (topic with constraints)' if a query asks for deep research, a report, citations, tutorial links, papers (IEEE/arXiv/etc), web scraping, or a document output (doc/docx/pdf). Include any requested size constraints (pages/lines) in the same research command.
 *** If the query is asking to perform multiple tasks like 'open facebook, telegram and close whatsapp' respond with 'open facebook, open telegram, close whatsapp' ***
 *** If the user is saying goodbye or wants to end the conversation like 'bye pixie.' respond with 'exit'.***

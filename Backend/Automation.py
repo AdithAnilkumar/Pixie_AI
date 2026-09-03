@@ -15,6 +15,7 @@ from urllib.parse import quote_plus
 import threading
 from Backend.FolderContext import get_effective_folder
 from Backend.ResearchTool import generate_research_report
+import re
 
 # Load environment variables
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -323,6 +324,34 @@ def LiveSearch(query):
     except Exception as e:
         return f"Live search unavailable: {str(e)}"
 
+def SendWhatsAppMessage(Query):
+    """
+    Sends a WhatsApp message via Web/Desktop WhatsApp.
+    Handles phone numbers and text prompts.
+    """
+    q = str(Query).strip()
+    lower = q.lower()
+    for prefix in ["send whatsapp message to ", "send whatsapp to ", "whatsapp message ", "whatsapp "]:
+        if lower.startswith(prefix):
+            q = q[len(prefix):].strip()
+            break
+
+    phone = ""
+    message = q
+    phone_match = re.search(r"(\+?\d{10,15})", q)
+    if phone_match:
+        phone = phone_match.group(1).replace("+", "")
+        message = re.sub(r"\+?\d{10,15}", "", q).replace("to ", "").replace("saying ", "").strip()
+
+    if phone:
+        url = f"https://web.whatsapp.com/send?phone={phone}&text={quote_plus(message)}"
+        webbrowser.open(url)
+        return f"Opening WhatsApp Web to send message to +{phone}."
+    else:
+        url = f"https://web.whatsapp.com/send?text={quote_plus(q)}"
+        webbrowser.open(url)
+        return "Opening WhatsApp to send message."
+
 async def TranslateAndExecute(Query):
     Query = str(Query).strip()
     lower_query = Query.lower()
@@ -336,6 +365,8 @@ async def TranslateAndExecute(Query):
         result = LiveSearch(search_query)
         print(result)
         return result
+    elif lower_query.startswith("whatsapp") or "whatsapp message" in lower_query or "send whatsapp" in lower_query:
+        return SendWhatsAppMessage(Query)
     elif lower_query.startswith("play "):
         PlayYouTube(Query[5:].strip())
     elif lower_query.startswith("open "):
