@@ -1,4 +1,4 @@
-﻿import pygame  # Import pygame library for handling audio playback
+import pygame  # Import pygame library for handling audio playback
 import random  # Import random for generating random choices
 import asyncio # Import asyncio for asynchronous operations
 import edge_tts # Import edge_tts for text-to-speech functionality
@@ -14,6 +14,23 @@ SPEECH_PATH = PROJECT_ROOT / "Data" / "speech.mp3"
 env_vars = dotenv_values(".env")
 AssistantVoice = env_vars.get("AssistantVoice") or env_vars.get("ASSISTANT_VOICE") or "en-US-AriaNeural" # Get the AssistantVoice from environment variables
 
+import re
+
+def clean_text_for_speech(raw_text: str) -> str:
+    """Strip markdown headers, asterisks, hash symbols, and code blocks for clean spoken audio."""
+    text = str(raw_text or "")
+    # Remove code blocks
+    text = re.sub(r"```[\s\S]*?```", " Code block output is shown on screen. ", text)
+    # Remove headers ###, ##, #
+    text = re.sub(r"#{1,6}\s*", "", text)
+    # Remove bold / italic asterisks and underscores
+    text = re.sub(r"[*_]{1,3}", "", text)
+    # Clean bullet dash lists
+    text = re.sub(r"^\s*[-*+]\s+", "", text, flags=re.MULTILINE)
+    # Remove backticks
+    text = re.sub(r"`", "", text)
+    return text.strip()
+
 # Asynchronous function to convert text to an audio file
 async def TextToAudioFile(text) -> None:
     file_path = SPEECH_PATH # Define the path where the speech file will be saved
@@ -22,8 +39,12 @@ async def TextToAudioFile(text) -> None:
     if file_path.exists(): # Check if the file already exists
         file_path.unlink()     # If it exists, remove it to avoid overwriting errors
         
+    cleaned_speech_text = clean_text_for_speech(text)
+    if not cleaned_speech_text:
+        cleaned_speech_text = "Done."
+
     # Create the communicate object to generate speech
-    communicate = edge_tts.Communicate(text, AssistantVoice, pitch='+5Hz', rate='+13%')
+    communicate = edge_tts.Communicate(cleaned_speech_text, AssistantVoice, pitch='+5Hz', rate='+13%')
     await communicate.save(str(file_path)) # Save the generated speech as an MP3 file
 
 # Function to manage Text-to-Speech (TTS) functionality
