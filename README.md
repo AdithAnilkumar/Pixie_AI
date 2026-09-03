@@ -1,69 +1,58 @@
 # Pixie_AI 🦊
 
-An intelligent AI assistant with voice interaction, real-time search, image generation, gesture control, research capabilities, Telegram integration, and a beautiful 3D GUI interface.
+An intelligent 3D AI assistant featuring real-time voice interaction, Groq & Cohere AI models, WhatsApp messaging automation, FLUX image & diagram generation, MediaPipe gesture control, deep academic research exporter, Telegram remote control, and a modern 3D GUI interface.
 
 ## ✨ Core Features
 
 ### 🎤 Voice & Speech
 
-- **Speech-to-Text**: Real-time voice recognition with Web Speech API & Groq Whisper transcription
-- **Text-to-Speech**: Natural voice responses with Edge TTS
-- **Voice Commands**: Hands-free control of all features
-- **Multi-language Support**: Automatic translation capabilities
+- **High-Speed Speech-to-Text**: Instant voice recognition with 0.4s fast pause detection (Web Speech API & Groq Whisper)
+- **Natural Text-to-Speech**: High-speed (+25% rate) neural voice output using Edge TTS with automatic markdown symbol filtering
+- **Full Response Speech**: Complete response spoken out loud cleanly without truncating or skipping sentences
+- **Voice Commands**: Hands-free control for app launching, web search, messaging, research, and system control
 
 ### 🤖 AI Intelligence
 
-- **Conversational AI**: Context-aware chatbot powered by Llama 3.3 70B (Groq)
-- **Decision Engine**: Smart intent classification (general/realtime/automation) powered by Cohere Command-R
-- **Real-time Search**: Live web search with Google integration and financial market snapshots
-- **Context Awareness**: Folder context and conversation history tracking
-- **Chat History**: Persistent conversation logging with JSON storage
+- **Conversational AI**: Powered by Groq (`groq/compound`) for ultra-fast, high-accuracy conversational intelligence
+- **Respectful & Direct**: Addresses the user as "Sir" naturally with concise, bold key points and zero robotic headers
+- **Decision Engine**: Intent classification powered by Cohere Command-R model (`Backend/Model.py`)
+- **Real-time Web Search**: Live web search integration with Google and real-time financial market snapshots
+- **Folder Context**: Inject entire local folder codebases into AI system context for instant code assistance
 
-### 🖼️ Image Generation
+### 💬 WhatsApp & Application Automation
+
+- **WhatsApp Voice Messaging**: Send pre-composed WhatsApp messages to contacts or phone numbers via voice/text (`SendWhatsAppMessage`)
+- **Multi-Path App Control**: Open/close desktop applications (Spotify, WhatsApp, Chrome, Edge, Firefox) with web fallback
+- **Content Exporter**: Write letters, emails, code, and documents directly to local files and open in Notepad
+- **System Controls**: Control volume (up/down/mute/unmute) via hands-free automation
+
+### 🖼️ Image & Diagram Generation
 
 - **AI Image Creation**: Generate images using Hugging Face models (FLUX.1 Schnell, Stable Diffusion 3.5 Large, SDXL)
-- **Diagram Support**: Create flowcharts, charts, infographics, and technical diagrams
-- **Batch Generation**: Create multiple variations simultaneously
-- **Auto-optimization**: Enhanced prompts for presentation-ready quality
+- **Diagram Support**: Auto-optimized prompt engineering for 2D flowcharts, infographics, mind maps, and architecture diagrams
+- **Batch Generation**: Create multiple variations simultaneously and view instantly in workspace
 
 ### 🖐️ Gesture Control
 
-- **Hand Tracking**: MediaPipe-powered gesture recognition
-- **Window Switching**: Palm swipe left/right to switch windows (Alt+Tab)
-- **Tab Navigation**: Two-finger swipe to switch browser tabs (Ctrl+Tab)
+- **Hand Tracking**: MediaPipe-powered gesture recognition (`Backend/GestureControl.py`)
+- **Window Switching**: Palm swipe left/right to switch active windows (`Alt+Tab`)
+- **Tab Navigation**: Two-finger swipe to switch browser tabs (`Ctrl+Tab`)
 - **Scroll Control**: Palm up/down for page scrolling
-- **Pinch Zoom**: Zoom in/out with pinch gesture (Ctrl+Scroll)
-- **Minimize All**: Hold closed fist to minimize all windows (Win+M)
+- **Pinch Zoom**: Zoom in/out with pinch gesture (`Ctrl+Scroll`)
+- **Minimize All**: Hold closed fist for 0.8s to minimize all windows (`Win+M`)
 
-### 📚 Research Tool
+### 📚 Deep Research Tool
 
-- **Deep Research**: Generate comprehensive research reports on any topic
-- **Multi-source Aggregation**: Combines Google, arXiv, IEEE, Crossref sources
-- **Academic Papers**: Automatic paper discovery and citation
-- **Tutorial Videos**: YouTube tutorial link collection
-- **Custom Length**: Specify pages (1-500) or lines (20-20000)
-- **DOCX Export**: Professional formatted reports with citations
+- **Comprehensive Reports**: Multi-source aggregation combining Google, arXiv papers, Crossref/IEEE metadata, and YouTube tutorials
+- **Formatted Export**: Professional `.docx` document generation with numbered academic citations
+- **Custom Constraints**: Specify target length in pages (1-500) or lines (20-20000)
 
-### 📱 Telegram Integration
+### 📱 Telegram Remote Control Bridge
 
-- **Remote Control**: Control Pixie from anywhere via Telegram bot
-- **File Sharing**: Send/receive files, folders, screenshots
-- **Voice Messages**: Send voice replies to Telegram with Groq Whisper transcription
-- **File Browser**: Interactive file system browser with filters and pagination
-- **Folder Zipping**: Automatic compression and sending of folders
-- **Location Sharing**: Send GPS coordinates
-- **Contact Sharing**: Share contact information
-- **Polls**: Create and send polls
-- **Media Albums**: Send multiple photos/videos as albums
-
-### ⚙️ Automation & System Control
-
-- **App Control**: Open/close applications by voice (multi-path execution for Spotify, WhatsApp, Chrome, Edge, Firefox)
-- **Web Navigation**: Open websites and search Google/YouTube
-- **Content Generation**: AI-powered writing (emails, code, documents)
-- **System Commands**: Volume control, mute/unmute
-- **File Operations**: Create, move, and manage files
-- **Folder Context**: Load entire folders into AI context for code assistance
+- **Full Remote Access**: Access and control Pixie from your phone anywhere via Telegram bot
+- **Voice Message Processing**: Send voice notes on Telegram; Pixie transcribes with Groq Whisper and sends voice replies back
+- **Desktop Screenshots**: Receive instant live desktop screenshots by sending `/screenshot` to your bot
+- **Interactive File Browser**: Paginated file system browser with filters to download files and folders to your phone
 
 ## 🏗️ Architecture
 
@@ -71,23 +60,24 @@ An intelligent AI assistant with voice interaction, real-time search, image gene
 Pixie_AI/
 ├── Backend/           # Core AI services
 │   ├── Model.py              # Cohere decision engine
-│   ├── Chatbot.py            # Conversational AI (Llama 3.3 70B)
-│   ├── SpeechToText.py       # Voice input processing
-│   ├── TextToSpeech.py       # Voice output generation (Edge TTS)
-│   ├── ImageGeneration.py    # AI image & diagram creation (FLUX)
-│   ├── RealtimeSearchEngine.py # Live web search engine
+│   ├── Chatbot.py            # Conversational AI (Groq compound)
+│   ├── SpeechToText.py       # Instant voice recognition (0.4s stability)
+│   ├── TextToSpeech.py       # Speech synthesis (+25% rate & markdown cleaner)
+│   ├── ImageGeneration.py    # AI image & diagram creation (FLUX.1)
+│   ├── RealtimeSearchEngine.py # Live web search & financial snapshots
 │   ├── ResearchTool.py       # Deep research report generator (.docx)
 │   ├── GestureControl.py     # MediaPipe hand tracking & gestures
-│   ├── TelegramBridge.py     # Remote control Telegram service
+│   ├── TelegramBridge.py     # Remote control Telegram bot service
 │   ├── FolderContext.py      # Workspace folder context loader
-│   └── Automation.py         # Task & app automation
+│   └── Automation.py         # App opener & WhatsApp messaging automation
 ├── Frontend/          # User interface
-│   ├── GUI.py                # PyWebview application & system tray
-│   ├── Graphics/             # 3D models and assets (Fox_draco.glb)
+│   ├── GUI.py                # PyWebview application & System Tray integration
+│   ├── Graphics/             # 3D assets (Fox_draco.glb & icons)
 │   └── Files/                # UI state management
 ├── Data/              # Application data
-│   └── ChatLog.json          # Conversation history
-└── Main.py            # Application entry point
+│   └── ChatLog.json          # Persistent conversation history
+├── start_pixie.py     # Startup script with pre-flight verification
+└── Main.py            # Main application entry point
 ```
 
 ## 🚀 Getting Started
@@ -106,54 +96,35 @@ git clone https://github.com/AdithAnilkumar/Pixie_AI.git
 cd Pixie_AI
 ```
 
-2. Create and activate virtual environment:
-
-```bash
-python -m venv venv
-# Windows
-venv\Scripts\activate
-# Linux/Mac
-source venv/bin/activate
-```
-
-3. Install dependencies:
+2. Install dependencies:
 
 ```bash
 pip install -r Requirements.txt
 ```
 
-4. Configure environment variables:
-   Create a `.env` file in the root directory with your API keys:
+3. Configure environment variables in `.env`:
 
 ```ini
 Username=Adith
 Assistantname=Pixie
+
+# Required API Keys
 GroqAPIKey=your_groq_api_key
+GroqModel=groq/compound
 CohereAPIKey=your_cohere_api_key
 HuggingFaceAPIKey=your_huggingface_api_key
+
+# Optional Telegram Bot Remote Control
+TelegramBotToken=your_telegram_bot_token
 ```
 
 ### Running the Application
 
 ```bash
-python Main.py
+python start_pixie.py
 ```
 
-## 🎮 Usage
-
-1. Launch the application using `python Main.py`
-2. Interact with Pixie through the 3D GUI interface or System Tray
-3. Use voice commands or text input
-4. Ask questions, generate images/diagrams, perform deep research, or automate tasks
-
-## 🛠️ Technologies
-
-- **Python**: Core programming language
-- **AI/ML Models**: Llama 3.3 70B (Groq), Cohere Command-R, FLUX.1 Schnell (Hugging Face)
-- **Gesture Recognition**: MediaPipe HandLandmarker & PyAutoGUI
-- **3D Graphics**: Three.js & PyWebview with GLB models
-- **Speech Processing**: Web Speech API & Edge TTS (Neural Voices)
-- **Document Generation**: python-docx report exporter with academic citations
+*Note: On launch, Pixie runs quietly in your Windows System Tray (icon near clock) with voice input enabled automatically. Right-click the Pixie icon and click **Pixie UI** to view the 3D GUI window anytime.*
 
 ## 👤 Author
 
@@ -161,10 +132,6 @@ python Main.py
 
 - GitHub: [@AdithAnilkumar](https://github.com/AdithAnilkumar)
 
-## 🙏 Acknowledgments
+## 📄 License
 
-- Built with modern AI models and computer vision frameworks.
-
----
-
-⭐ Star this repository if you find it helpful!
+This project is licensed under the [MIT License](LICENSE).

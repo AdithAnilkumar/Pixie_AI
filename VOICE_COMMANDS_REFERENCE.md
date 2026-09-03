@@ -15,6 +15,9 @@
 ✅ "Open WhatsApp"
 ✅ "Launch WhatsApp"
 ✅ "Start WhatsApp"
+✅ "Send WhatsApp message to +1234567890 saying Hello Sir"
+✅ "Send WhatsApp to +919876543210 saying Meeting at 5 PM"
+✅ "WhatsApp message saying Project report is complete"
 ✅ "Close WhatsApp"
 ```
 
