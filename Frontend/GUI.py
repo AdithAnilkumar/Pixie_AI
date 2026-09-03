@@ -664,9 +664,9 @@ def GraphicalUserInterface():
     SetMicrophoneStatus("True")
     global chat_window, is_ui_running, start_ui_requested, desired_ui_visible
 
-    desired_ui_visible = True
-    start_ui_requested = True
-    is_ui_running = True
+    desired_ui_visible = False
+    start_ui_requested = False
+    is_ui_running = False
     setup_tray()
 
     sync_thread = threading.Thread(target=_file_sync_loop, daemon=True)

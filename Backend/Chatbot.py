@@ -1,4 +1,4 @@
-﻿from groq import Groq
+from groq import Groq
 from json import load, dump
 import datetime
 from dotenv import dotenv_values
@@ -14,6 +14,7 @@ env_vars = dotenv_values(ENV_PATH)
 Username = env_vars.get("Username")
 Assistantname = env_vars.get("Assistantname")
 GroqAPIKey = env_vars.get("GroqAPIKey")
+GroqModel = env_vars.get("GroqModel") or "groq/compound"
 
 client = Groq(api_key=GroqAPIKey)
 messages = []
@@ -84,7 +85,7 @@ def chatBot(query):
             context_messages.append({"role": "system", "content": folder_context})
 
         completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GroqModel,
             messages=SystemChatBot + context_messages + [{"role": "system", "content": RealtimeInformation()}] + messages,
             temperature=0.6,
             max_tokens=2048,

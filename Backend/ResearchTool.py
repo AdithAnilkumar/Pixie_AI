@@ -29,7 +29,7 @@ GroqModel = (
     or env_vars.get("GROQ_MODEL")
     or os.getenv("GroqModel")
     or os.getenv("GROQ_MODEL")
-    or "llama-3.3-70b-versatile"
+    or "groq/compound"
 )
 
 
